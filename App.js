@@ -1,9 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, SafeAreaView} from 'react-native';
+import {NavigationContainer} from "@react-navigation/native";
+import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {useFonts} from "expo-font";
 
 import AppLoading from "expo-app-loading";
 import CategoriesScreen from "./screens/CategoriesScreen";
+import MealsOverview from "./screens/MealsOverview";
+
+const Stack = createNativeStackNavigator()
 
 export default function App() {
     const [isLoaded] = useFonts({
@@ -19,9 +24,12 @@ export default function App() {
     return (
         <>
             <StatusBar style={"dark"}/>
-            <SafeAreaView style={styles.container}>
-                <CategoriesScreen/>
-            </SafeAreaView>
+            <NavigationContainer>
+                <Stack.Navigator initialRouteName={'Meals Categories'}>
+                    <Stack.Screen name={'Meals Categories'} component={CategoriesScreen}/>
+                    <Stack.Screen name={'Meals Overview'} component={MealsOverview}/>
+                </Stack.Navigator>
+            </NavigationContainer>
         </>
     );
 }
