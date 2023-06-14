@@ -4,8 +4,6 @@ import {View, FlatList, StyleSheet} from "react-native";
 import {CATEGORIES} from '../data/dummy-data'
 import CategoryItem from "../components/CategoryItem";
 
-
-
 function CategoriesScreen() {
     return (
         <View style={styles.categoriesContainer}>
@@ -25,5 +23,6 @@ export default CategoriesScreen;
 
 const styles = StyleSheet.create({
     categoriesContainer:{
+        flex:1
     }
 })

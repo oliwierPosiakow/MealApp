@@ -3,13 +3,13 @@ import {View, Pressable, Text, StyleSheet} from "react-native";
 
 function CategoryItem({title, color}) {
 
-    const backgorundColor = {backgroundColor: color}
+    const backgroundColor = {backgroundColor: color}
 
     return (
-        <View style={[styles.tile, backgorundColor]}>
+        <View style={[styles.tile, backgroundColor]}>
             <Pressable>
                 <View>
-                    <Text>{title}</Text>
+                    <Text style={styles.tileText}>{title}</Text>
                 </View>
             </Pressable>
         </View>
@@ -27,5 +27,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: "center",
         borderRadius: 7,
+        shadowOffset: {width: 2, height: 2},
+        shadowColor: 'black',
+        shadowRadius: 3,
+        shadowOpacity: .2,
+    },
+    tileText:{
+        fontFamily: 'roboto-medium',
+        fontSize: 16,
     }
 })
