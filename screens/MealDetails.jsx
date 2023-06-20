@@ -1,10 +1,10 @@
-import React from 'react';
-import {Pressable, View, Text, Image, StyleSheet, ScrollView} from "react-native";
+import React, {useLayoutEffect} from 'react';
+import {Pressable, View, Text, Image, StyleSheet, ScrollView, Button} from "react-native";
 import {MEALS} from "../data/dummy-data";
 import { Entypo } from '@expo/vector-icons';
-import { Foundation } from '@expo/vector-icons';
+import NavigationButton from "../components/NavigationButton";
 
-function MealDetails({route}) {
+function MealDetails({route, navigation}) {
     const id = route.params.mealId
     const selectedMeal = MEALS.find((meal) => meal.id === id)
     const {
@@ -16,6 +16,24 @@ function MealDetails({route}) {
         ingredients,
         steps,
     } = selectedMeal
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            title: 'Meal Details'
+        })
+    },[])
+
+    function headerButtonHandler(){
+        console.log('Saved')
+    }
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => {
+                return <NavigationButton icon={'save'} color={'#f5f5f5'} handler={headerButtonHandler}/>
+            }
+        })
+    },[navigation, headerButtonHandler])
 
     return (
         <ScrollView style={styles.mealDetailsContainer}>
@@ -102,6 +120,4 @@ const styles = StyleSheet.create({
         fontFamily: 'roboto-regular',
         fontSize: 16,
     }
-
-
 })
