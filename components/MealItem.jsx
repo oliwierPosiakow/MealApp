@@ -1,8 +1,18 @@
 import React from 'react';
 import {View, Text, Pressable, Image, StyleSheet} from "react-native";
+import {useNavigation} from "@react-navigation/native";
 
-function MealItem({title, imageUrl, duration, complexity, affordability}) {
+function MealItem({title, imageUrl, duration, complexity, affordability, id}) {
+
     const cost = affordability === 'affordable' ? '$' : affordability === 'luxurious' ? '$$$' : '$$'
+    const navigation = useNavigation()
+    function onNavigate(){
+        navigation.navigate('Meal Details', {
+            mealId: id,
+            mealTitle: title
+        })
+    }
+
     return (
         <View style={styles.mealContainer}>
             <Pressable
@@ -12,6 +22,7 @@ function MealItem({title, imageUrl, duration, complexity, affordability}) {
                        pressed ? styles.buttonPressed : null
                    ]
                }}
+                onPress={onNavigate}
             >
                 <View style={styles.imageContainer}>
                     <Image style={styles.mealImage} source={{uri: imageUrl}}/>

@@ -28,6 +28,7 @@ function MealsOverview({route, navigation}) {
                 duration={itemData.item.duration}
                 complexity={itemData.item.complexity}
                 affordability={itemData.item.affordability}
+                id={itemData.item.id}
             />
         )
     }
@@ -38,6 +39,7 @@ function MealsOverview({route, navigation}) {
                 data={displayedMeals}
                 renderItem={renderMealItem}
                 keyExtractor={meal => meal.id}
+                showsVerticalScrollIndicator={false}
             />
         </View>
     );

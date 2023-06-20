@@ -14,6 +14,7 @@ function CategoriesScreen({navigation}) {
                 }}
                 keyExtractor={(item) => item.id}
                 numColumns={2}
+                showsVerticalScrollIndicator={false}
             />
         </View>
     );

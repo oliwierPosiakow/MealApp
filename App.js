@@ -7,12 +7,14 @@ import {useFonts} from "expo-font";
 import AppLoading from "expo-app-loading";
 import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsOverview from "./screens/MealsOverview";
+import MealDetails from "./screens/MealDetails";
 
 const Stack = createNativeStackNavigator()
 
 export default function App() {
     const [isLoaded] = useFonts({
         'roboto-bold' : require('./assets/fonts/Roboto-Bold.ttf'),
+        'roboto-regular': require('./assets/fonts/Roboto-Regular.ttf'),
         'roboto-medium' : require('./assets/fonts/Roboto-Medium.ttf'),
         'roboto-light' : require('./assets/fonts/Roboto-Light.ttf')
     })
@@ -37,6 +39,10 @@ export default function App() {
                     <Stack.Screen
                         name={'Meals Overview'}
                         component={MealsOverview}
+                    />
+                    <Stack.Screen
+                        name={'Meal Details'}
+                        component={MealDetails}
                     />
                 </Stack.Navigator>
             </NavigationContainer>
