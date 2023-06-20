@@ -1,5 +1,6 @@
 import React, {useLayoutEffect} from 'react';
 import {View, FlatList, StyleSheet} from "react-native";
+import { Entypo } from '@expo/vector-icons';
 
 import {MEALS, CATEGORIES} from "../data/dummy-data";
 import MealItem from "../components/MealItem";
