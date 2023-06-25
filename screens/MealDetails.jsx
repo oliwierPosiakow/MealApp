@@ -1,8 +1,10 @@
-import React, {useLayoutEffect} from 'react';
+import React, {useContext, useLayoutEffect} from 'react';
 import {Pressable, View, Text, Image, StyleSheet, ScrollView, Button} from "react-native";
 import {MEALS} from "../data/dummy-data";
 import { Entypo } from '@expo/vector-icons';
 import NavigationButton from "../components/NavigationButton";
+import meal from "../models/meal";
+import {useSelector} from "react-redux";
 
 function MealDetails({route, navigation}) {
     const id = route.params.mealId
@@ -16,6 +18,7 @@ function MealDetails({route, navigation}) {
         ingredients,
         steps,
     } = selectedMeal
+    useSelector()
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -24,13 +27,18 @@ function MealDetails({route, navigation}) {
     },[])
 
     function headerButtonHandler(){
-        console.log('Saved')
+        if(mealIsFavorite){
+            favoriteMealsCtx.removeFavorite(id)
+        }
+        else {
+            favoriteMealsCtx.addFavorite(id)
+        }
     }
 
     useLayoutEffect(() => {
         navigation.setOptions({
             headerRight: () => {
-                return <NavigationButton icon={'save'} color={'#f5f5f5'} handler={headerButtonHandler}/>
+                return <NavigationButton icon={mealIsFavorite ? 'check' : 'save'} color={'#f5f5f5'} handler={headerButtonHandler}/>
             }
         })
     },[navigation, headerButtonHandler])

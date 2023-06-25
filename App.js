@@ -4,13 +4,15 @@ import {NavigationContainer} from "@react-navigation/native";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
 import {useFonts} from "expo-font";
 import { Entypo } from '@expo/vector-icons';
+import {Provider} from "react-redux";
+import {createDrawerNavigator} from "@react-navigation/drawer";
 
 import AppLoading from "expo-app-loading";
 import CategoriesScreen from "./screens/CategoriesScreen";
 import MealsOverview from "./screens/MealsOverview";
 import MealDetails from "./screens/MealDetails";
-import {createDrawerNavigator} from "@react-navigation/drawer";
 import FavouritesScreen from "./screens/FavouritesScreen";
+import {store} from "./store/redux/store";
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -53,30 +55,32 @@ export default function App() {
     return (
         <>
             <StatusBar style={"light"}/>
-            <NavigationContainer>
-                <Stack.Navigator initialRouteName={'Meals Categories'} screenOptions={{
-                    title: 'All Categories',
-                    headerStyle: { backgroundColor: '#1c1c1c'},
-                    headerTintColor: '#f5f5f5',
-                }}>
+            <Provider store={store}>
+                <NavigationContainer>
+                    <Stack.Navigator initialRouteName={'Meals Categories'} screenOptions={{
+                        title: 'All Categories',
+                        headerStyle: { backgroundColor: '#1c1c1c'},
+                        headerTintColor: '#f5f5f5',
+                    }}>
 
-                    <Stack.Screen
-                        name={'Drawer'}
-                        component={DrawerNav}
-                        options={{
-                            headerShown: false,
-                        }}
-                    />
-                    <Stack.Screen
-                        name={'Meals Overview'}
-                        component={MealsOverview}
-                    />
-                    <Stack.Screen
-                        name={'Meal Details'}
-                        component={MealDetails}
-                    />
-                </Stack.Navigator>
-            </NavigationContainer>
+                        <Stack.Screen
+                            name={'Drawer'}
+                            component={DrawerNav}
+                            options={{
+                                headerShown: false,
+                            }}
+                        />
+                        <Stack.Screen
+                            name={'Meals Overview'}
+                            component={MealsOverview}
+                        />
+                        <Stack.Screen
+                            name={'Meal Details'}
+                            component={MealDetails}
+                        />
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </Provider>
         </>
     );
 }
