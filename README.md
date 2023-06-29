@@ -20,3 +20,7 @@ MealApp is an application written in ReactNative which show many different recip
 ## Screenshots
 
 <img src="https://github.com/oliwierPosiakow/MealApp/blob/master/assets/screenshots/categories.PNG" width="250" height="500" />
+<img src="https://github.com/oliwierPosiakow/MealApp/blob/master/assets/screenshots/details.PNG" width="250" height="500" />
+<img src="https://github.com/oliwierPosiakow/MealApp/blob/master/assets/screenshots/favorites.PNG" width="250" height="500" />
+<img src="https://github.com/oliwierPosiakow/MealApp/blob/master/assets/screenshots/meals.PNG" width="250" height="500" />
+<img src="https://github.com/oliwierPosiakow/MealApp/blob/master/assets/screenshots/nav.PNG" width="250" height="500" />
