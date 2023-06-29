@@ -17,6 +17,6 @@ MealApp is an application written in ReactNative which show many different recip
 - React
 - Context API and Redux Toolkit
 
-## Demo
+## Screenshots
 
-![](https://raw.githubusercontent.com/oliwierPosiakow/MiniGame/master/assets/images/demo.gif)
+<img src="https://github.com/oliwierPosiakow/MealApp/blob/master/assets/screenshots/categories.PNG" width="250" height="500" />
