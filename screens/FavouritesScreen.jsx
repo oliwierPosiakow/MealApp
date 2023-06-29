@@ -1,14 +1,14 @@
 import React, {useContext} from 'react';
 import {View, Text, StyleSheet} from "react-native";
-import {FavoritesContext} from "../store/context/favoritesContext";
 import MealsList from "../components/MealsList";
 import {MEALS} from "../data/dummy-data";
 import { Entypo } from '@expo/vector-icons';
+import {useSelector} from "react-redux";
 
 function FavouritesScreen(props) {
-    const favoriteMealsCtx = useContext(FavoritesContext)
+    const favoriteMealsIds = useSelector((state) => {state.favoriteMeals.ids})
 
-    const favouriteMeals = MEALS.filter(meal => favoriteMealsCtx.ids.includes(meal.id))
+    const favouriteMeals = MEALS.filter(meal => favoriteMealsIds.includes(meal.id))
 
     if(favouriteMeals.length === 0){
         return (

@@ -1,10 +1,12 @@
 import React, {useContext, useLayoutEffect} from 'react';
 import {Pressable, View, Text, Image, StyleSheet, ScrollView, Button} from "react-native";
 import {MEALS} from "../data/dummy-data";
+import meal from "../models/meal";
 import { Entypo } from '@expo/vector-icons';
 import NavigationButton from "../components/NavigationButton";
-import meal from "../models/meal";
-import {useSelector} from "react-redux";
+
+import {useDispatch, useSelector} from "react-redux";
+import {addFavorite, removeFavorite} from "../store/redux/favorites";
 
 function MealDetails({route, navigation}) {
     const id = route.params.mealId
@@ -18,7 +20,10 @@ function MealDetails({route, navigation}) {
         ingredients,
         steps,
     } = selectedMeal
-    useSelector()
+    const favoriteMealIds = useSelector((state) => state.favoriteMeals.ids)
+    const dispatch = useDispatch()
+
+    const mealIsFavorite = favoriteMealIds.includes(id)
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -28,10 +33,10 @@ function MealDetails({route, navigation}) {
 
     function headerButtonHandler(){
         if(mealIsFavorite){
-            favoriteMealsCtx.removeFavorite(id)
+            dispatch(removeFavorite({id: id}))
         }
         else {
-            favoriteMealsCtx.addFavorite(id)
+            dispatch(addFavorite({id: id}))
         }
     }
 
